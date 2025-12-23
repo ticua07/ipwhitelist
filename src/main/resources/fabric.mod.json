@@ -6,7 +6,7 @@
 	"description": "Whitelist players using their IPs instead of their names.",
 	"authors": ["ticua07"],
 	"contact": {
-		"homepage": "https://ticua.ar/",
+		"homepage": "https://modrinth.com/mod/ipwhitelistmod",
 		"sources": "https://github.com/ticua07/ipwhitelist"
 	},
 	"license": "GPL-3.0",
