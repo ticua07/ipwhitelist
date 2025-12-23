@@ -29,7 +29,7 @@ public class Ipwhitelist implements ModInitializer {
 	private static final Path CONFIG_FILE =
 			CONFIG_DIR.resolve("ip-whitelist-config.properties");
 	public static final Set<String> whitelistedIps = new HashSet<>();
-	public static boolean enabled = true;
+	public static boolean enabled = false;
 
 	// This logger is used to write text to the console and the log file.
 	// It is considered best practice to use your mod id as the logger's name.
