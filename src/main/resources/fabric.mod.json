@@ -2,24 +2,18 @@
 	"schemaVersion": 1,
 	"id": "ipwhitelist",
 	"version": "${version}",
-	"name": "ipwhitelist",
-	"description": "This is an example description! Tell everyone what your mod is about!",
-	"authors": [
-		"Me!"
-	],
+	"name": "IP Whitelist",
+	"description": "Whitelist players using their IPs instead of their names.",
+	"authors": ["ticua07"],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://ticua.ar/",
+		"sources": "https://github.com/ticua07/ipwhitelist"
 	},
-	"license": "CC0-1.0",
-	"icon": "assets/ipwhitelist/icon.png",
-	"environment": "*",
+	"license": "GPL-3.0",
+	"environment": "server",
 	"entrypoints": {
 		"main": [
 			"ar.ticua.Ipwhitelist"
-		],
-		"client": [
-			"ar.ticua.IpwhitelistClient"
 		]
 	},
 	"mixins": [
