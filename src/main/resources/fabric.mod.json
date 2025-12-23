@@ -23,11 +23,7 @@
 		]
 	},
 	"mixins": [
-		"ipwhitelist.mixins.json",
-		{
-			"config": "ipwhitelist.client.mixins.json",
-			"environment": "client"
-		}
+		"ipwhitelist.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.18.3",

@@ -1,7 +1,9 @@
 package ar.ticua;
 
+import ar.ticua.mixin.ConnectionAccessor;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.networking.v1.ServerLoginConnectionEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +20,15 @@ public class Ipwhitelist implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+
+		// load whitelist first
+
+		ServerLoginConnectionEvents.QUERY_START.register(((handler, server, sender, synchronizer) -> {
+
+			String conn = ((ConnectionAccessor) handler).ipwhitelist$getConnection().getLoggableAddress(true);
+
+			LOGGER.info("Someone connected!!: {}", conn);
+		}));
 
 		LOGGER.info("Hello Fabric world!");
 	}
