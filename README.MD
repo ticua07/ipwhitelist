@@ -32,6 +32,6 @@ The mod creates a folder at `/config/ipwhitelist/` with two files:
 
 ## Motivation behind this
 
-My motivation behind this mod is the f***\ers at omgur who join cracked servers for fun to destroy them, with this mod you should be safe. 
+My motivation behind this mod is the f\*\*\*ers at omgur who join cracked servers for fun to destroy them, with this mod you should be safe. 
 
 Also all other auth mods (EasyAuth and that's it lol) are overly complicated for what a simple whitelist should be.
