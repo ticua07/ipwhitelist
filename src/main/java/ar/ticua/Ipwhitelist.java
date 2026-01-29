@@ -1,5 +1,19 @@
 package ar.ticua;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.HashSet;
+import java.util.Properties;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import ar.ticua.commands.IpWhitelistCommands;
 import ar.ticua.mixin.ConnectionAccessor;
 import net.fabricmc.api.ModInitializer;
@@ -7,16 +21,8 @@ import net.fabricmc.fabric.api.networking.v1.ServerLoginConnectionEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.network.Connection;
 import net.minecraft.network.chat.Component;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
-import java.util.stream.Collectors;
+import ar.ticua.IpUtils;
 
 public class Ipwhitelist implements ModInitializer {
 	public static final String MOD_ID = "ipwhitelist";
@@ -58,7 +64,7 @@ public class Ipwhitelist implements ModInitializer {
 				return;
 			}
 
-			if (enabled && !whitelistedIps.contains(ip)) {
+			if (enabled && !isWhitelisted(ip)) {
 				LOGGER.info("IP not found in whitelist");
 				handler.disconnect(Component.literal(
 						"§cYou are not white-listed on this server!\n" +
@@ -72,8 +78,6 @@ public class Ipwhitelist implements ModInitializer {
 	}
 
 	public static void loadData() {
-
-
 		try {
 			Files.createDirectories(CONFIG_DIR);
 
@@ -116,6 +120,15 @@ public class Ipwhitelist implements ModInitializer {
 		} catch (IOException e) {
 			LOGGER.error("Failed to save IP whitelist data", e);
 		}
+	}
+
+	private static boolean isWhitelisted(String ip) {
+		for (String entry : whitelistedIps) {
+			if (IpUtils.matches(ip, entry)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
